@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WelchDentistry.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerDoctor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @foreach (var item in Model)
+            { 
+                @if (item.CustomerName == user.UserName)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AppointmentTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerDoctor)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+        else
+        {
+            <h2>No appointments.</h2>
+        }
+    </tbody>
+</table>
