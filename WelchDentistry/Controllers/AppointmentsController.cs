@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using WelchDentistry.Areas.Identity.Data;
 using WelchDentistry.Data;
 using WelchDentistry.Models;
 
@@ -14,10 +15,10 @@ namespace WelchDentistry.Controllers
     public class AppointmentsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<WelchDentistryUser> _userManager;
 
 
-        public AppointmentsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public AppointmentsController(ApplicationDbContext context, UserManager<WelchDentistryUser> userManager)
         {
             _context = context;
             _userManager = userManager;

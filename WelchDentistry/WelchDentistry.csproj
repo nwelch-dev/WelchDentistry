@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-WelchDentistry-A3BAE539-3767-4511-B393-E4D0EBE4DFF9</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\IdentityHostingStartup.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />

@@ -5,7 +5,8 @@
 }
 
 @using Microsoft.AspNetCore.Identity
-@inject UserManager<IdentityUser> UserManager
+@using WelchDentistry.Areas.Identity.Data
+@inject UserManager<WelchDentistryUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
 }
